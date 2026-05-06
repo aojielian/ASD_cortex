@@ -1,0 +1,56 @@
+# Large data and intermediate files
+*.rds
+*.RData
+*.rdata
+*.h5
+*.h5ad
+*.mtx
+*.mtx.gz
+*.tsv.gz
+*.csv.gz
+*.txt.gz
+*.zip
+*.tar
+*.tar.gz
+
+# Generated results
+results/
+tables/
+figures_output/
+plots/
+tmp/
+cache/
+
+# Logs and scheduler files
+logs/
+errs/
+outs/
+*.log
+*.out
+*.err
+*.slurm
+*.sbatch
+
+# Generated figures and documents
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.svg
+*.xlsx
+*.xls
+*.docx
+*.pptx
+
+# R / Python artifacts
+.Rhistory
+.RData
+.Rproj.user/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db

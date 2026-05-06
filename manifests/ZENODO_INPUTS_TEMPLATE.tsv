@@ -1,0 +1,17 @@
+moduleexpected_zenodo_inputdescription
+program_definition/SFARI01_SFARI_primary_Sand1_standardized.tsvStandardized primary SFARI source-pool gene list.
+program_definition/frozen_programsR1A_frozen_program_memberships.tsvPredefined ASD risk-gene program membership used by the manuscript.
+brainspanBrainSpan_stage_specificity_zscores.tsv.gzBrainSpan cortical stage-specificity gene z-score table.
+brainspanBrainSpan_cortex_stage_summary.tsvBrainSpan cortical sample counts by developmental stage group.
+adult_bulk/GSE102741GSE102741.standardized_expr.tsv.gzGene-symbol by sample standardized adult bulk expression matrix.
+adult_bulk/GSE102741GSE102741.standardized_meta.tsvSample metadata with diagnosis labels.
+adult_bulk/GSE64018GSE64018.standardized_expr.tsv.gzGene-symbol by sample standardized adult bulk expression matrix.
+adult_bulk/GSE64018GSE64018.standardized_meta.tsvSample metadata with diagnosis labels.
+adult_bulk/Gandal2022Gene_NormalizedExpression_Metadata_wModelMatrix.RDataGandal2022 normalized expression and metadata object.
+adult_singlecell/PsychENCODEPsychENCODE processed program-score or Seurat-compatible inputAdult cortical single-cell/single-nucleus resource used for localization and donor-level sensitivity.
+adult_singlecell/VelmeshevVelmeshev processed program-score or Seurat-compatible inputAdult cortical single-cell/single-nucleus validation resource.
+fetal_reference/EzeEze fetal processed program-score tableFetal developmental-state localization input.
+fetal_reference/NowakowskiNowakowski processed program-score tableIndependent fetal cortical reference input.
+fetal_reference/GSE162170GSE162170 RNA/multiome processed program-score tablesIndependent fetal RNA and multiome reference inputs.
+enrichment/SynGOSynGO processed enrichment input or SynGO ontology workbookCurated synaptic ontology/resource used for enrichment analyses.
+enrichment/Reactome_MSigDBReactome/MSigDB GMT filesGene-set collections used for pathway and regulatory refinement.
