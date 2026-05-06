@@ -32,8 +32,8 @@ ASD_cortex/
 │   ├── 02_adult_bulk/
 │   ├── 03_adult_singlecell/
 │   ├── 04_fetal_localization/
-│   ├── 05_deconvolution/
-│   ├── 06_functional_enrichment/
+│   ├── 05_functional_refinement/
+│   ├── 06_specificity/
 │   ├── 07_revision_robustness/
 │   └── 08_additional_sensitivity/
 ├── figures/
@@ -44,7 +44,9 @@ ASD_cortex/
     └── sessionInfo_generated.txt
 ```
 
-Large processed data objects, generated results, runtime logs, and submission scripts are not included in this repository. Processed inputs required for reproduction are provided separately through the Zenodo archive.
+Large processed data objects, generated results, runtime logs, and submission scripts are not included in this repository. Processed input files, harmonized intermediate tables, source tables, and supplementary tables supporting the analyses are available from Zenodo:
+
+**https://doi.org/10.5281/zenodo.20046256**
 
 ---
 
@@ -68,7 +70,23 @@ Excluded:
 - Generated figures.
 - Raw public datasets.
 
-The processed data package should be deposited in Zenodo and linked from the manuscript and repository.
+The processed data package is deposited in Zenodo and should be used together with this code repository.
+
+---
+
+## Data availability
+
+Processed input files, harmonized intermediate tables, source tables, and supplementary tables supporting the analyses are available from Zenodo:
+
+**https://doi.org/10.5281/zenodo.20046256**
+
+The Zenodo archive contains processed and harmonized files needed for practical reproduction of the manuscript analyses. Raw public datasets are not redistributed in the archive and should be obtained from their original repositories.
+
+Expected Zenodo input organization is summarized in:
+
+```text
+manifests/ZENODO_INPUTS_TEMPLATE.tsv
+```
 
 ---
 
@@ -88,11 +106,6 @@ The analyses use publicly available and de-identified human datasets, including:
 - **SynGO** synaptic ontology/resource;
 - **Reactome / MSigDB** gene-set resources.
 
-Processed intermediate files required to reproduce the analyses should be deposited in Zenodo. See:
-
-```text
-manifests/ZENODO_INPUTS_TEMPLATE.tsv
-```
 
 ---
 
@@ -196,51 +209,21 @@ Key expected outputs:
 
 ---
 
-### 5. Bulk deconvolution and composition-aware modeling
+### 5. Functional refinement
 
-Adult bulk cortical signals can reflect both within-cell transcriptional changes and shifts in cellular composition. To address this, broad cortical cell-class deconvolution is performed using an NNLS framework.
-
-The deconvolution analyses include:
-
-- reference construction from adult cortical single-cell data;
-- NNLS-inferred broad cell-class fractions;
-- synthetic-mixture benchmarking;
-- composition-adjusted program models;
-- alternative positive-part OLS deconvolution sensitivity.
-
-Relevant scripts:
-
-```text
-analysis/05_deconvolution/
-```
-
-Key expected outputs:
-
-- inferred broad cell-class fractions;
-- composition-shift summaries;
-- unadjusted versus composition-adjusted program effects;
-- synthetic-mixture benchmark summaries;
-- alternative deconvolution comparison tables.
-
----
-
-### 6. Functional enrichment and specificity analysis
-
-Functional analyses are used to distinguish synaptic and regulatory features of the ASD risk-gene programs.
+Functional refinement analyses are used to distinguish synaptic and regulatory features of the ASD risk-gene programs.
 
 The analyses include:
 
 - SynGO enrichment;
 - Reactome enrichment;
 - transcription-factor target enrichment;
-- SynGO-annotated synaptic versus non-synaptic decomposition;
-- matched-random control analyses;
-- CAMERA and mROAST inter-gene-correlation-aware sensitivity analyses.
+- SynGO-annotated synaptic versus non-synaptic decomposition.
 
 Relevant scripts:
 
 ```text
-analysis/06_functional_enrichment/
+analysis/05_functional_refinement/
 ```
 
 Key expected outputs:
@@ -248,8 +231,32 @@ Key expected outputs:
 - SynGO enrichment tables;
 - Reactome enrichment tables;
 - transcription-factor target enrichment tables;
-- matched-random empirical P-value and z-score summaries;
-- CAMERA/mROAST gene-set summaries.
+- synaptic and non-synaptic decomposition summaries.
+
+---
+
+### 6. Specificity analyses
+
+Specificity analyses test whether observed enrichment patterns exceed matched-random expectations.
+
+The analyses include:
+
+- size-matched random controls;
+- expression-matched random controls;
+- empirical P-value summaries;
+- standardized null-deviation summaries.
+
+Relevant scripts:
+
+```text
+analysis/06_specificity/
+```
+
+Key expected outputs:
+
+- matched-random empirical P-value summaries;
+- matched-random z-score summaries;
+- integrated specificity summaries.
 
 ---
 
@@ -266,7 +273,9 @@ These include:
 - GSE64018 divergence and sample-influence analysis;
 - synaptic leave-one-gene-out analysis;
 - top-expression-dropout analysis;
-- best-available covariate-adjusted model summaries.
+- best-available covariate-adjusted model summaries;
+- CAMERA and mROAST inter-gene-correlation-aware sensitivity analyses;
+- alternative deconvolution analyses.
 
 Relevant scripts:
 
@@ -274,14 +283,6 @@ Relevant scripts:
 analysis/07_revision_robustness/
 ```
 
-Key expected outputs:
-
-- alternative scoring summaries;
-- GSE64018 leave-one-sample-out and influence tables;
-- synaptic leave-one-gene-out summaries;
-- top-expression-dropout results;
-- mapped gene-set comparison summaries;
-- cohort-specific covariate-adjusted model tables.
 
 ---
 
@@ -306,7 +307,7 @@ analysis/08_additional_sensitivity/Step60B_detection_filtered_rescoring_v3.R
 analysis/08_additional_sensitivity/Step60B_add_Gandal_and_merge_v4.R
 ```
 
-Expected final table:
+Expected final table in the Zenodo archive:
 
 ```text
 32_manuscript_compact_three_cohort_detection_summary_v4.tsv
@@ -332,7 +333,7 @@ Relevant script:
 analysis/08_additional_sensitivity/Step60A_BrainSpan_boundary_sensitivity_v1.R
 ```
 
-Expected final table:
+Expected final table in the Zenodo archive:
 
 ```text
 09_manuscript_compact_boundary_sensitivity_summary.tsv
@@ -357,13 +358,13 @@ The main figures correspond to:
 - **Figure 5:** SynGO and Reactome functional refinement;
 - **Figure 6:** matched-random specificity analyses.
 
-Generated figures are not stored in this code repository.
+Generated figures are not stored in this code repository. Source tables needed for figure reproduction are included in the Zenodo archive.
 
 ---
 
 ## How to reproduce the analyses
 
-This repository is intended to be used together with a Zenodo processed-data archive.
+This repository is intended to be used together with the Zenodo processed-data archive.
 
 Recommended steps:
 
@@ -374,7 +375,11 @@ git clone https://github.com/aojielian/ASD_cortex.git
 cd ASD_cortex
 ```
 
-2. Download the processed Zenodo data package.
+2. Download the processed Zenodo data package:
+
+```text
+https://doi.org/10.5281/zenodo.20046256
+```
 
 3. Arrange processed input files according to:
 
@@ -424,7 +429,7 @@ env/sessionInfo_generated.txt
 
 ## Reproducibility notes
 
-Large intermediate objects are intentionally excluded from GitHub. Processed data should be hosted through Zenodo. Slurm submission scripts and runtime logs are not included. Generated figures and result tables are also not included in the code repository.
+Large intermediate objects are intentionally excluded from GitHub. Processed data are hosted through Zenodo. Slurm submission scripts and runtime logs are not included. Generated figures and result tables are also not included in the code repository.
 
 The code was organized for transparency and traceability. It is not intended to be a fully containerized one-command workflow.
 
@@ -432,11 +437,17 @@ The code was organized for transparency and traceability. It is not intended to 
 
 ## Citation
 
-If you use this repository, please cite the associated manuscript:
+If you use this repository, please cite the associated manuscript and data archive.
+
+Manuscript:
 
 **Layered synaptic and developmental-regulatory signatures of ASD risk-gene programs in human cortical transcriptomes**
 
-Citation details will be added after publication.
+Processed data archive:
+
+Lian A. Processed data and source tables for “Layered synaptic and developmental-regulatory signatures of ASD risk-gene programs in human cortical transcriptomes”. Zenodo. 2026. https://doi.org/10.5281/zenodo.20046256
+
+Citation details for the manuscript will be added after publication.
 
 ---
 
